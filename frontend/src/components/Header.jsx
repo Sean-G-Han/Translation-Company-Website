@@ -4,12 +4,11 @@ import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../assets/logo.png";
-import { useContext } from "react";
-import { Context } from "../App";
+import { Link, useOutletContext } from "react-router-dom";
 import LanguageToggle from "./LanguageToggle";
-
 function Header() {
-  const [language] = useContext(Context); // Default language
+
+  const context = useOutletContext()
 
   return (
     <>
@@ -20,39 +19,35 @@ function Header() {
         style={{ textAlign: "center" }}
       >
         <Container>
-          <Navbar.Brand href="#home" className="d-flex justify-content-center">
+          <Navbar.Brand href="/">
             <Image src={logo} style={{ width: "100px" }} />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" className="text-center">
-            <Nav className="me-auto w-100 justify-content-center">
-              <Nav.Link
-                href="#home"
-                style={{ fontSize: "20px", padding: "10px 15px" }}
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <LanguageToggle/>
+            <Nav className="me-autor">
+              <Link to={"/"}
+                className="text-nowrap mx-auto"
+                style={{ fontSize: "20px", color: "grey", textDecoration: "none", padding: "10px 15px", width: '120px'}}
               >
-                {language === "en" ? "Home" : '主页'}
-              </Nav.Link>
-              <Nav.Link
-                href="#about"
-                style={{ fontSize: "20px", padding: "10px 15px" }}
+                {context.language === "en" ? "Home" : "主页"}
+              </Link>
+              <Link to={"/quote"}
+                className="text-nowrap mx-auto"
+                style={{ fontSize: "20px", color: "grey", textDecoration: "none", padding: "10px 15px", width: '120px' }}
               >
-                {language === "en" ? "About" : '关于'}
-              </Nav.Link>
-              <Nav.Link
-                href="#quote"
-                style={{ fontSize: "20px", padding: "10px 15px" }}
-              >
-                {language === "en" ? "Quotation" : '行情'}
-              </Nav.Link>
+                {context.language === "en" ? "Quotation" : "行情"}
+              </Link>
             </Nav>
-            <div className="d-flex justify-content-center mt-3">
-              <LanguageToggle/>
-            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
   );
 }
-
+/*
+        <Container>
+          <LanguageToggle/>
+        </Container>
+*/
 export default Header;

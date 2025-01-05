@@ -1,15 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Header from './components/Header'
-import React, {useState} from 'react'
-
-export const Context = React.createContext();
+import { RouterProvider } from 'react-router-dom'
+import router from './Router'
 
 function App() {
-  const [language, setLanguage] = useState("en");
   return (
-    <Context.Provider value={[language, setLanguage]}>
-      <Header />
-    </Context.Provider>
+    <>
+      <RouterProvider router={router}></RouterProvider>
+    </>
   )
 }
 
