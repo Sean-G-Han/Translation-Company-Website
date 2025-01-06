@@ -17,7 +17,7 @@ function LanguageToggle() {
             className="my-2"
             onClick={toggleLanguage}
             style={{ 
-              width:'120px',
+              width:'80px',
               whiteSpace: "nowrap",
             }}
             >
