@@ -1,6 +1,10 @@
 .footer-mobile {
-    font-size: small;
+    font-size: smaller;
     display: none;
+}
+
+.footer {
+    font-size: small;
 }
 
 @media (max-width: 768px) {

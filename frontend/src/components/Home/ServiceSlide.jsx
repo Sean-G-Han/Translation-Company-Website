@@ -6,7 +6,6 @@ import "./ServiceSlide.css"
 
 function ServiceSlide({ imgLink, chText, enText }) {
   const context = useOutletContext();
-  const isChinese = context.language !== 'en';
 
   return (
     <div className="py-3 service-slide">
@@ -16,7 +15,7 @@ function ServiceSlide({ imgLink, chText, enText }) {
       <div
         className="service-slide-text"
         style={{
-          fontSize: isChinese ? "1.4rem" : "1.25rem",
+          fontSize: "1.25rem",
         }}
       >
         <p>{context.language === "en" ? enText : chText}</p>

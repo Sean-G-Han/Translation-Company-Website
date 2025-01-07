@@ -36,11 +36,6 @@ function Header({ page }) {
               >
                 {context.language === "en" ? "Home" : "主页"}
               </Link>
-              <Link to={"/services"}
-                className={`text-nowrap mx-auto ${page === "services" ? "active-link" : "inactive-link"}`}
-              >
-                {context.language === "en" ? "Services" : "服务"}
-              </Link>
               <Link to={"/quote"}
                 className={`text-nowrap mx-auto ${page === "quote" ? "active-link" : "inactive-link"}`}
               >

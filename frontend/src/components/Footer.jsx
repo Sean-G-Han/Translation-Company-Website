@@ -11,21 +11,13 @@ function Footer() {
 
   return (
     <>
-    <Navbar className="bg-dark text-light footer fixed-bottom" style={{height: "85px"}}>
+    <Navbar className="bg-dark text-light footer mt-5">
       <Container className="d-flex justify-content-between">
-        <Navbar.Brand href="/" style={{height: "70px"}}>
-          <Image src={logo} style={{ height: "70px" }} />
+        <Navbar.Brand href="/">
+          <Image src={logo} style={{ height: "100px" }} />
         </Navbar.Brand>
-        <div className="pt-4">
-          <p>
-            {context.language === "en" ? "For enquiries, contact:"  : "如有疑问，请联系: "}
-            <br/>
-            Whatsapp: (+65) 1234 5678
-            <br/>
-            Email: example@email.com
-          </p>
-        </div>
-        <div className="pt-4">
+        <div>
+          <h5>{context.language === "en" ? "Company"  : "公司"}</h5>
           <p>
             {context.language === "en" ? "All rights reserved." : "保留所有权利"}
             <br/>
@@ -34,7 +26,20 @@ function Footer() {
             UEN: 53383412X
           </p>
         </div>
-        <div className="pt-4">
+
+        <div>
+          <p>
+            <h5>{context.language === "en" ? "Contacts"  : "联系"}</h5>
+            {context.language === "en" ? "For enquiries, contact:"  : "如有疑问，请联系: "}
+            <br/>
+            Whatsapp: (+65) 9686 8187
+            <br/>
+            Email: example@email.com
+          </p>
+        </div>
+        
+        <div>
+          <h5>{context.language === "en" ? "Socials"  : "社交"}</h5>
             {context.language === "en" ? "Follow us on:" : "关注我们:"}
             <br/>
             <h1>Dummy</h1>
@@ -47,7 +52,7 @@ function Footer() {
           <p>
             {context.language === "en" ? "For enquiries, contact:"  : "如有疑问，请联系: "}
             <br/>
-            Whatsapp: (+65) 1234 5678
+            Whatsapp: (+65) 9686 8187
             <br/>
             Email: example@email.com
           </p>

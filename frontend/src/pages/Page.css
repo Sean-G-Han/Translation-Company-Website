@@ -4,9 +4,19 @@
   min-height: 100vh;
 }
 
+.about-us {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .carousel-item .d-flex {
     flex-direction: column; /* Stack the ServiceSlides vertically */
     align-items: center;   /* Center-align the slides */
+  }
+  .about-us {
+    flex-direction: column;
   }
 }

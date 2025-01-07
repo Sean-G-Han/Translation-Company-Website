@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Page.css"; // Import the CSS file
+import "../../pages/Page.css";
 import { useEffect, useState } from "react";
 import MServePage from "./MobileServicePage.";
 import DServePage from "./DesktopServicePage";

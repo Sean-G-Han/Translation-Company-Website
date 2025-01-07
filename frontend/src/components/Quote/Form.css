@@ -1,0 +1,9 @@
+.custom-placeholder::placeholder { /*Show Placeholder in light grey*/
+    background-color: inherit;
+    color: #ccc;
+    opacity: 1;
+}
+
+.custom-div {
+    margin-top: 1rem;
+}

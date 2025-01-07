@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { useOutletContext } from "react-router-dom";
 import "./Page.css"; // Import the CSS file
 import Footer from "../components/Footer";
+import QuoteForm from "../components/Quote/Form";
 
 function QuotePage() {
   const context = useOutletContext();
@@ -12,9 +13,7 @@ function QuotePage() {
   return (
     <div className="dark-theme"> {/* Apply dark theme to the body */}
       <Header page="quote"/>
-      <div className="container d-flex flex-column align-items-center mt-5">
-        
-      </div>
+      <QuoteForm />
       <Footer />
     </div>
   );
