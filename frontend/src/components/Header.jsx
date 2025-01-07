@@ -6,7 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../assets/logo.png";
 import { Link, useOutletContext } from "react-router-dom";
 import LanguageToggle from "./LanguageToggle";
-function Header() {
+import PropTypes from "prop-types";
+import "./Header.css"; // Import the CSS file
+
+function Header({ page }) {
 
   const context = useOutletContext()
 
@@ -24,17 +27,22 @@ function Header() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <LanguageToggle/>
-            <Nav className="me-autor">
+            <div>
+              <LanguageToggle/>
+            </div>
+            <Nav className="me-autor ">
               <Link to={"/"}
-                className="text-nowrap mx-auto"
-                style={{ fontSize: "20px", color: "grey", textDecoration: "none", padding: "10px 15px", width: '120px'}}
+                className={`text-nowrap mx-auto ${page === "home" ? "active-link" : "inactive-link"}`}
               >
                 {context.language === "en" ? "Home" : "主页"}
               </Link>
+              <Link to={"/services"}
+                className={`text-nowrap mx-auto ${page === "services" ? "active-link" : "inactive-link"}`}
+              >
+                {context.language === "en" ? "Services" : "服务"}
+              </Link>
               <Link to={"/quote"}
-                className="text-nowrap mx-auto"
-                style={{ fontSize: "20px", color: "grey", textDecoration: "none", padding: "10px 15px", width: '120px' }}
+                className={`text-nowrap mx-auto ${page === "quote" ? "active-link" : "inactive-link"}`}
               >
                 {context.language === "en" ? "Quotation" : "行情"}
               </Link>
@@ -45,9 +53,8 @@ function Header() {
     </>
   );
 }
-/*
-        <Container>
-          <LanguageToggle/>
-        </Container>
-*/
+Header.propTypes = {
+  page: PropTypes.string.isRequired,
+};
+
 export default Header;

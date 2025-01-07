@@ -1,0 +1,15 @@
+.active-link {
+  color: white;
+  font-weight: bold;
+}
+
+.inactive-link {
+    color: grey;
+    font-weight: normal;
+  }
+
+.text-nowrap.mx-auto {
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px 15px;
+}

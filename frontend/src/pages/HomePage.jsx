@@ -2,22 +2,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from 'react-bootstrap';
 import Header from "../components/Header";
 import { useOutletContext } from "react-router-dom";
+import "./Page.css"; // Import the CSS file
+import Footer from "../components/Footer";
 
 function HomePage() {
   const context = useOutletContext();
   const isChinese = context.language !== 'en';
 
   return (
-    <>
-      <Header />
+    <div className="dark-theme"> {/* Apply dark theme to the body */}
+      <Header page='home'/>
       <div className="container d-flex flex-column align-items-center mt-5">
-        <Card className="text-center" style={{ borderWidth: "0px", borderColor: "black" }}>
+        <Card className="text-center bg-dark text-light" style={{ borderWidth: "0px", borderColor: "black", width: "80vw"}}>
           <Card.Title className="m-3" style={{ fontSize: "2rem", fontWeight: "bold" }}>
-            {context.language === 'en' ? 'Welcome to Speedy Translation' : '欢迎来到快捷翻译服务'}
+            {context.language === 'en' ? 'Who are we?' : '我们是谁？'}
           </Card.Title>
           <Card.Body
             style={{
-              fontSize: isChinese ? "1.5rem" : "1.25rem",
+              fontSize: isChinese ? "1.4rem" : "1.25rem",
               lineHeight: isChinese ? "2" : "1.75",
             }}
           >
@@ -36,7 +38,8 @@ function HomePage() {
           </Card.Body>
         </Card>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

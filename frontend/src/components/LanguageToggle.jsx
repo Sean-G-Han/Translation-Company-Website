@@ -12,17 +12,18 @@ function LanguageToggle() {
 
   return (
     <>
+      <div className="d-flex justify-content-center mx-auto my-auto" style={{ width:'100px',}}>
         <Button
             variant="dark"
-            className="my-2"
             onClick={toggleLanguage}
             style={{ 
-              width:'80px',
+              width:'75px',
               whiteSpace: "nowrap",
             }}
             >
                 {context.language === "en" ? "中文" : "English"}
         </Button>
+      </div>
     </>
   );
 }

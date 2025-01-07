@@ -1,0 +1,12 @@
+.dark-theme {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .carousel-item .d-flex {
+    flex-direction: column; /* Stack the ServiceSlides vertically */
+    align-items: center;   /* Center-align the slides */
+  }
+}
