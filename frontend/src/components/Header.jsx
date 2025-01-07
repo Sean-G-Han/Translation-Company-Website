@@ -22,7 +22,7 @@ function Header({ page }) {
         style={{ textAlign: "center" }}
       >
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href="/" className="brand"> 
             <Image src={logo} style={{ width: "100px" }} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

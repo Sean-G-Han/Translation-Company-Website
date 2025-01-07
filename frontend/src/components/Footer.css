@@ -1,5 +1,13 @@
+.footer-mobile {
+    font-size: small;
+    display: none;
+}
+
 @media (max-width: 768px) {
     .footer {
         display: none;
+    }
+    .footer-mobile {
+        display: block;
     }
   }

@@ -9,8 +9,8 @@ function ServiceSlide({ imgLink, chText, enText }) {
   const isChinese = context.language !== 'en';
 
   return (
-    <div className="py-5 service-slide">
-      <div className="service-slide-image position-relative" style={{minHeight: '120px'}}>
+    <div className="py-3 service-slide">
+      <div className="service-slide-image position-relative" style={{minHeight: '170px'}}>
         <Image src={imgLink} className='position-absolute bottom-0 start-50 translate-middle-x' style={{width: '10vw'}}/>
       </div>
       <div

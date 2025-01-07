@@ -9,6 +9,13 @@ function HomePage() {
   const context = useOutletContext();
   const isChinese = context.language !== 'en';
 
+  const getFontSize = () => {
+    if (window.innerWidth <= 768) {
+      return isChinese ? "1.2rem" : "1.1rem";
+    }
+    return isChinese ? "1.4rem" : "1.25rem";
+  };
+
   return (
     <div className="dark-theme"> {/* Apply dark theme to the body */}
       <Header page='home'/>
@@ -19,7 +26,7 @@ function HomePage() {
           </Card.Title>
           <Card.Body
             style={{
-              fontSize: isChinese ? "1.4rem" : "1.25rem",
+              fontSize: getFontSize(),
               lineHeight: isChinese ? "2" : "1.75",
             }}
           >
