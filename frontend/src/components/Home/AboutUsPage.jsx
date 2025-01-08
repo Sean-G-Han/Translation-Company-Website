@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Container, Image } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { useOutletContext } from "react-router-dom";
 import "../../pages/Page.css";
-import portrait from "../../assets/portrait.jpg";
 
 function AboutUsPage() {
   const context = useOutletContext();
@@ -28,7 +27,6 @@ function AboutUsPage() {
             }}
           >
             <Container className="about-us">
-            <div><Image src={portrait} className="m-3" style={{width: '200px', borderRadius: '50%'}} /> </div>
             
             <div className="text-start">
             {context.language === 'en'

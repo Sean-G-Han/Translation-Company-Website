@@ -7,3 +7,13 @@
 .custom-div {
     margin-top: 1rem;
 }
+
+.card {
+    width: 50vw;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 80vw;
+    }
+}
