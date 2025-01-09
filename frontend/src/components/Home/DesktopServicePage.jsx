@@ -11,7 +11,7 @@ function DServePage() {
       <div className="container d-flex flex-column align-items-center mt-5">
         <Card className="text-center bg-dark text-light" style={{ borderWidth: "0px", borderColor: "black", width: "80vw"}}>
             <Card.Title className="m-3" style={{ fontSize: "2rem", fontWeight: "bold" }}>
-              {context.language === "en" ? "What We Translate ?" : "我们翻译的内容"}
+              {context.language === "en" ? "What We Translate" : "我们翻译的内容"}
             </Card.Title>
           <Carousel className="pb-3">
             <Carousel.Item>

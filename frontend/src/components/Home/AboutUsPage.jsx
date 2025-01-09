@@ -18,7 +18,7 @@ function AboutUsPage() {
       <div className="container d-flex flex-column align-items-center mt-5">
         <Card className="text-center bg-dark text-light" style={{ borderWidth: "0px", borderColor: "black", width: "80vw"}}>
           <Card.Title className="m-3" style={{ fontSize: "2rem", fontWeight: "bold" }}>
-            {context.language === 'en' ? 'Who are we?' : '我们是谁？'}
+            {context.language === 'en' ? 'Who are we' : '我们是谁？'}
           </Card.Title>
           <Card.Body
             style={{
@@ -33,7 +33,7 @@ function AboutUsPage() {
               ? 'Hi, I am Tan Cheng Siong, a former court-translator working in the ' +
                 'State Court and owner of Speedy Translation Services. ' + 
                 'Speedy Translation Services is a sole-proprietorship that specializes ' +
-                'in translating documents from mandarin to English and vice-versa. ' +
+                'in translating documents from mandarin to english and vice-versa. ' +
                 'With 30 years of translating experience, I have worked on a variety of documents ' +
                 'such as, but not limited to, driving licenses, death certificates, ARCA ' +
                 'business profiles, household transcripts, divorce certificates, and more. '
