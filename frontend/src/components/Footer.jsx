@@ -28,14 +28,12 @@ function Footer() {
         </div>
 
         <div>
-          <p>
-            <h5>{context.language === "en" ? "Contacts"  : "联系"}</h5>
+          <h5>{context.language === "en" ? "Contacts"  : "联系"}</h5>
             {context.language === "en" ? "For enquiries, contact:"  : "如有疑问，请联系: "}
-            <br/>
-            Whatsapp: (+65) 9686 8187
-            <br/>
-            Email: example@email.com
-          </p>
+          <br/>
+          Whatsapp: (+65) 9686 8187
+          <br/>
+          Email: example@email.com
         </div>
         
         <div>

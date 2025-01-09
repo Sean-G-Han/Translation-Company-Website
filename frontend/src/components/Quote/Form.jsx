@@ -1,13 +1,47 @@
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useOutletContext } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Form.css";
+import { useState } from 'react';
+import { db } from '../../firebase';
+import { addDoc, collection } from 'firebase/firestore';
 
 function QuoteForm() {
   const context = useOutletContext();
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    type: "Birth Certificate",
+    language: "English → Chinese",
+    wordCount: "",
+  });
+
+  const handleChange = (e) => {
+    console.log(import.meta.env);
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        type: formData.type,
+        language: formData.language,
+        wordCount: formData.wordCount,
+      })
+      console.log("Document written with ID: ", docRef.id);
+      Alert("Success", "Your quotation request has been submitted successfully!", "success");
+    } catch (error) {
+      console.error("Error:", error);
+      Alert("Error", "An error occurred while submitting your quotation request. Please try again later.", "error");
+    }
+  };
   return (
     <div className="container d-flex flex-column align-items-center mt-5">
       <Card className="text-start bg-dark text-light" style={{ borderWidth: "0px", borderColor: "black" }}>
@@ -24,7 +58,7 @@ function QuoteForm() {
                 name="name"
                 placeholder={context.language === "en" ? "Enter Name" : "输入姓名"} 
                 className="bg-dark text-light custom-placeholder"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={handleChange}
               />
             </Form.Group>
           </div>
@@ -37,7 +71,7 @@ function QuoteForm() {
                 name="email"
                 placeholder={context.language === "en" ? "Enter Email" : "输入电子邮件"}
                 className="bg-dark text-light custom-placeholder"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={handleChange}
               />
             </Form.Group>
           </div>
@@ -50,7 +84,7 @@ function QuoteForm() {
                 name="phone"
                 placeholder={context.language === "en" ? "Enter Phone Number" : "输入电话号码"} 
                 className="bg-dark text-light custom-placeholder"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={handleChange}
               />
             </Form.Group>
           </div>
@@ -63,7 +97,7 @@ function QuoteForm() {
                 as="select"
                 name="type"
                 className="bg-dark text-light custom-placeholder"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={handleChange}
               >
                 <option>{context.language === "en" ? "Birth Certificate" : "出生证明"}</option>
                 <option>{context.language === "en" ? "Business Profile" : "商业简介"}</option>
@@ -89,7 +123,7 @@ function QuoteForm() {
                   as="select"
                   name="language"
                   className="bg-dark text-light custom-placeholder"
-                  onChange={(e) => console.log(e.target.value)}
+                  onChange={handleChange}
                 >
                   <option>{context.language === "en" ? "English → Chinese" : "英文 → 华文"}</option>
                   <option>{context.language === "en" ? "Chinese → English" : "华文 → 英文"}</option>
@@ -105,7 +139,7 @@ function QuoteForm() {
                 name="wordCount"
                 placeholder={context.language === "en" ? "Enter Word Count" : "输入字数"} 
                 className="bg-dark text-light custom-placeholder" 
-                onChange={(e) => console.log(e.target.value)}
+                onChange={handleChange}
               />
             </Form.Group>
           </div>
