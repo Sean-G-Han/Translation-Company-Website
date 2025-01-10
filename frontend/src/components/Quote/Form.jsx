@@ -3,11 +3,11 @@ import { useOutletContext } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Form.css";
 import { useState } from 'react';
-import { db } from '../../firebase';
-import { addDoc, collection } from 'firebase/firestore';
+import sendEmail from './Email';
 
 function QuoteForm() {
   const context = useOutletContext();
+  const [emailSent, setEmailSent] = useState('pending');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,7 +18,6 @@ function QuoteForm() {
   });
 
   const handleChange = (e) => {
-    console.log(import.meta.env);
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -27,19 +26,19 @@ function QuoteForm() {
     e.preventDefault();
 
     try {
-      const docRef = await addDoc(collection(db, "users"), {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        type: formData.type,
-        language: formData.language,
-        wordCount: formData.wordCount,
-      })
-      console.log("Document written with ID: ", docRef.id);
-      Alert("Success", "Your quotation request has been submitted successfully!", "success");
+      await sendEmail(formData);
+      setEmailSent('success');
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        type: "Birth Certificate",
+        language: "English → Chinese",
+        wordCount: "",
+      });
     } catch (error) {
       console.error("Error:", error);
-      Alert("Error", "An error occurred while submitting your quotation request. Please try again later.", "error");
+      setEmailSent('error');
     }
   };
   return (
@@ -142,6 +141,10 @@ function QuoteForm() {
                 onChange={handleChange}
               />
             </Form.Group>
+          </div>
+          <div className="custom-div">
+            <Alert variant="success" show={emailSent === 'success'}>{context.language === "en" ? "Email was sent successfully. Please check you spam folder for a confirmation email." : "电子邮件已成功发送。请检查您的垃圾邮件文件夹以获取确认电子邮件。"}</Alert>
+            <Alert variant="danger" show={emailSent === 'error'}>{context.language === "en" ? "Email was not sent successfully. Please try again or contact us directly on Whatsapp." : "电子邮件发送失败。请重试或直接通过Whatsapp联系我们。"}</Alert>
           </div>
           <div className="custom-div">
             <Button variant="primary" type="submit">

@@ -1,17 +1,13 @@
-.footer-mobile {
+.mobile-small {
     font-size: smaller;
-    display: none;
-}
-
-.footer {
-    font-size: small;
+    display: inline-flex;
 }
 
 @media (max-width: 768px) {
-    .footer {
-        display: none;
-    }
-    .footer-mobile {
+    .mobile-small {
         display: block;
+    }
+    .mobile-gone {
+        display: none;
     }
   }
