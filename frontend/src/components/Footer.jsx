@@ -30,12 +30,10 @@ function Footer() {
 
           <div className="mx-3">
             <h5>{context.language === "en" ? "Contacts"  : "联系"}</h5>
-            <strong>Whatsapp</strong>
-            <br/>
+            <strong>{"Whatsapp: "}</strong>
             (+65) 9686 8187
             <br/>
-            <strong>Email</strong>
-            <br/>
+            <strong>{"Email: "}</strong>
             {import.meta.env.VITE_OUR_EMAIL}
           </div>
 

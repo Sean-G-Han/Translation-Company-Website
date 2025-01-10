@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Form.css";
 import { useState } from 'react';
 import sendEmail from './Email';
+import "../../pages/Page.css";
 
 function QuoteForm() {
   const context = useOutletContext();
@@ -34,7 +35,7 @@ function QuoteForm() {
         phone: "",
         type: "Birth Certificate",
         language: "English → Chinese",
-        wordCount: "",
+        description: "",
       });
     } catch (error) {
       console.error("Error:", error);
@@ -43,12 +44,12 @@ function QuoteForm() {
   };
   return (
     <div className="container d-flex flex-column align-items-center mt-5">
-      <Card className="text-start bg-dark text-light" style={{ borderWidth: "0px", borderColor: "black" }}>
+      <Card className="mobile text-start bg-dark text-light" style={{ borderWidth: "0px", borderColor: "black" }}>
         <Card.Title className="m-3 text-center" style={{ fontSize: "2rem", fontWeight: "bold" }}>
           {context.language === "en" ? "Get a Quotation" : "获取报价"}
         </Card.Title>
         <Form onSubmit={handleSubmit} style={{ padding: "0 2rem 2rem 2rem" }}>
-          <h3>Personal Details</h3>
+          <h3>{context.language === 'en' ? "Personal Details" : "个人信息"}</h3>
           <div className="custom-div">
             <Form.Group controlId="formBasicName">
               <Form.Label>{context.language === "en" ? "Name" : "姓名"}</Form.Label>
@@ -88,7 +89,7 @@ function QuoteForm() {
             </Form.Group>
           </div>
 
-          <h3 className='mt-5'>Document Details</h3>
+          <h3 className='mt-5'>{context.language === 'en' ? "Document Details" : '文件详情'}</h3>
           <div className="custom-div">
             <Form.Group controlId="formBasicDropdown">
               <Form.Label>{context.language === "en" ? "Document Type" : "文档类型"}</Form.Label>
@@ -132,11 +133,13 @@ function QuoteForm() {
 
           <div className="custom-div">
             <Form.Group controlId="formBasicWordCount">
-              <Form.Label>{context.language === "en" ? "Document Word Count" : "文档字数"}</Form.Label>
+              <Form.Label>{context.language === "en" ? "Description" : "描述"}</Form.Label>
               <Form.Control 
-                type="number"
-                name="wordCount"
-                placeholder={context.language === "en" ? "Enter Word Count" : "输入字数"} 
+                as="textarea"
+                rows={5}
+                type="text"
+                name="description"
+                placeholder={context.language === "en" ? "Enter Description" : "输入描述"} 
                 className="bg-dark text-light custom-placeholder" 
                 onChange={handleChange}
               />

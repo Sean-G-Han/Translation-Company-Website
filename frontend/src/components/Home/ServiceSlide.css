@@ -1,5 +1,11 @@
 @media (max-width: 768px) {
   .service-slide-image img {
+    width: 25vw !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .service-slide-image img {
     width: 40vw !important;
   }
 }

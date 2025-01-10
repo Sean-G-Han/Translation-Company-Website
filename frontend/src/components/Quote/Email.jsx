@@ -12,11 +12,14 @@ const sendEmail = async (formDetail) => {
             <li>Phone/电话: ${formDetail.phone}</li>
             <li>Language/语言: ${formDetail.language}</li>
             <li>Document Type/文件类型: ${formDetail.type}</li>
-            <li>Document Length/文件长度: ${formDetail.wordCount} words</li>
+            <li>Document Description/文件描述: ${formDetail.description}</li>
           </ul>
           <br/>
         `;
   try {
+    if (formDetail.name === '' || formDetail.email === '' || formDetail.phone === '' || formDetail.type === '') {
+      throw new Error('Please fill in all the required fields');
+    }
     const docRef = await addDoc(collection(db, "mail"), {
       to: [formDetail.email],
       message: {

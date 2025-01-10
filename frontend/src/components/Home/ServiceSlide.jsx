@@ -3,6 +3,7 @@ import { Image } from "react-bootstrap";
 import { useOutletContext } from "react-router-dom";
 import PropTypes from 'prop-types';
 import "./ServiceSlide.css"
+import "../../pages/Page.css";
 
 function ServiceSlide({ imgLink, chText, enText }) {
   const context = useOutletContext();
@@ -10,12 +11,12 @@ function ServiceSlide({ imgLink, chText, enText }) {
   return (
     <div className="py-3 service-slide">
       <div className="service-slide-image position-relative" style={{minHeight: '170px'}}>
-        <Image src={imgLink} className='position-absolute bottom-0 start-50 translate-middle-x' style={{width: '10vw'}}/>
+        <Image src={imgLink} className='position-absolute bottom-0 start-50 translate-middle-x' style={{width: '8vw'}}/>
       </div>
       <div
         className="service-slide-text"
         style={{
-          fontSize: "1.25rem",
+          fontSize: "1rem",
         }}
       >
         <p>{context.language === "en" ? enText : chText}</p>
